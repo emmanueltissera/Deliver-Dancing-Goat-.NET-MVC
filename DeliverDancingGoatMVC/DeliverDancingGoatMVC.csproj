@@ -46,6 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EmmTi.KenticoCloudConsumer.EnhancedDeliver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmmTi.KenticoCloudConsumer.EnhancedDeliver.1.0.0\lib\net45\EmmTi.KenticoCloudConsumer.EnhancedDeliver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="KenticoCloud.Deliver, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\KenticoCloud.Deliver.1.0.1.0\lib\net45\KenticoCloud.Deliver.dll</HintPath>
       <Private>True</Private>
@@ -215,6 +219,8 @@
     <Content Include="Content\Styles\variables.less" />
     <Content Include="Content\Styles\YourAccount.less" />
     <Content Include="package.json" />
+    <Content Include="config\PrivateSettings.config" />
+    <None Include="config\PrivateSettings.config.template" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\formAutoPost.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -262,7 +268,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
