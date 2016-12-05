@@ -187,6 +187,8 @@
     <Compile Include="Models\CafesViewModel.cs" />
     <Compile Include="Models\CoffeesFilterViewModel.cs" />
     <Compile Include="Models\ContactsViewModel.cs" />
+    <Compile Include="Models\CafeViewModel.cs" />
+    <Compile Include="Models\FactViewModel.cs" />
     <Compile Include="Models\HeroUnitViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

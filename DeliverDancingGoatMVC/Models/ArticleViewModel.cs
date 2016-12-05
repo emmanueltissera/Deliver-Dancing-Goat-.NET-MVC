@@ -1,9 +1,10 @@
-﻿using KenticoCloud.Deliver;
+﻿using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Helpers;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Models;
+using KenticoCloud.Deliver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Models;
 
 namespace DeliverDancingGoatMVC.Models
 {
@@ -20,13 +21,44 @@ namespace DeliverDancingGoatMVC.Models
         public Asset TeaserImage { get; set; }
         public string Title { get; set; }
 
+        private static List<KeyValuePair<string, string>> GetTaxonomyList(ContentItem content, string elementCode)
+        {
+            var element = content.Elements[elementCode];
+            var taxonomyList = new List<KeyValuePair<string, string>>();
+
+            if (element == null || element.value == null)
+            {
+                return taxonomyList;
+            }
+
+            foreach (var item in element.value)
+            {
+                taxonomyList.Add(new KeyValuePair<string, string>(item.codename.ToString(), item.name.ToString()));
+            }
+
+            return taxonomyList;
+        }
+
         protected override void MapContentForType(ContentItem content)
         {
-            BodyCopy = new HtmlString(content.GetString("body_copy"));
-            MetaDescription = content.GetString("meta_description");
-            MetaKeywords = content.GetString("meta_keywords");
-            TeaserImage = content.GetAssets("teaser_image").FirstOrDefault();
-            Title = content.GetString("title");
+            try
+            {
+                BodyCopy = new HtmlString(content.GetString("body_copy"));
+                MetaDescription = content.GetString("meta_description");
+                MetaKeywords = content.GetString("meta_keywords");
+                Personas = GetTaxonomyList(content, "personas");
+                PostDate = content.GetDateTime("post_date");
+                //RelatedArticles = content.GetModularContent("related_articles").GetListOfModularContent<ArticleViewModel>();
+                Summary = content.GetString("summary");
+                TeaserImage = content.GetAssets("teaser_image").FirstOrDefault();
+                Title = content.GetString("title");
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+           
         }
     }
 }

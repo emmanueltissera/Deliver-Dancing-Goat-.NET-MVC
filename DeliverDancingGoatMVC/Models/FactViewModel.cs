@@ -5,18 +5,18 @@ using System.Web;
 
 namespace DeliverDancingGoatMVC.Models
 {
-    public class HeroUnitViewModel : BaseContentItemViewModel
+    public class FactViewModel : BaseContentItemViewModel
     {
-        public const string ItemCodeName = "hero_unit";
+        public const string ItemCodeName = "fact_about_us";
 
+        public HtmlString Description { get; set; }
         public Asset Image { get; set; }
-        public HtmlString MarketingMessage { get; set; }
         public string Title { get; set; }
 
         protected override void MapContentForType(ContentItem content)
         {
+            Description = new HtmlString(content.GetString("description"));
             Image = content.GetAssets("image").FirstOrDefault();
-            MarketingMessage = new HtmlString(content.GetString("marketing_message"));
             Title = content.GetString("title");
         }
     }
