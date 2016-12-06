@@ -39,26 +39,17 @@ namespace DeliverDancingGoatMVC.Models
             return taxonomyList;
         }
 
-        protected override void MapContentForType(ContentItem content)
+        protected override void MapContentForType(ContentItem content, int currentDepth)
         {
-            try
-            {
-                BodyCopy = new HtmlString(content.GetString("body_copy"));
-                MetaDescription = content.GetString("meta_description");
-                MetaKeywords = content.GetString("meta_keywords");
-                Personas = GetTaxonomyList(content, "personas");
-                PostDate = content.GetDateTime("post_date");
-                //RelatedArticles = content.GetModularContent("related_articles").GetListOfModularContent<ArticleViewModel>();
-                Summary = content.GetString("summary");
-                TeaserImage = content.GetAssets("teaser_image").FirstOrDefault();
-                Title = content.GetString("title");
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
-           
+            BodyCopy = new HtmlString(content.GetString("body_copy"));
+            MetaDescription = content.GetString("meta_description");
+            MetaKeywords = content.GetString("meta_keywords");
+            Personas = GetTaxonomyList(content, "personas");
+            PostDate = content.GetDateTime("post_date");
+            RelatedArticles = content.GetModularContent("related_articles").GetListOfModularContent<ArticleViewModel>(currentDepth + 1);
+            Summary = content.GetString("summary");
+            TeaserImage = content.GetAssets("teaser_image").FirstOrDefault();
+            Title = content.GetString("title");
         }
     }
 }
