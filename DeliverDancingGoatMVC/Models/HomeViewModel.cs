@@ -16,7 +16,7 @@ namespace DeliverDancingGoatMVC.Models
         public HeroUnitViewModel HeroUnit { get; set; }
         public FactViewModel OurStory { get; set; }
 
-        protected override void MapContentForType(ContentItem content)
+        protected override void MapContentForType(ContentItem content, int currentDepth)
         {
             Articles = content.GetModularContent("articles").GetListOfModularContent<ArticleViewModel>();
             Cafes = content.GetModularContent("cafes").GetListOfModularContent<CafeViewModel>();

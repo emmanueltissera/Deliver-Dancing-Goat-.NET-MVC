@@ -13,7 +13,7 @@ namespace DeliverDancingGoatMVC.Models
         public HtmlString MarketingMessage { get; set; }
         public string Title { get; set; }
 
-        protected override void MapContentForType(ContentItem content)
+        protected override void MapContentForType(ContentItem content, int currentDepth)
         {
             Image = content.GetAssets("image").FirstOrDefault();
             MarketingMessage = new HtmlString(content.GetString("marketing_message"));

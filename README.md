@@ -1,13 +1,14 @@
-# Deliver Dancing Goat .NET MVC 5 sample application
+# Deliver Dancing Goat .NET MVC 5 sample application (Enhanced)
 
 ## SUMMARY
 
-Dancing Goat .NET MVC Application is a sample website utilizing Kentico Deliver service to manage and retrieve content.
+Dancing Goat .NET MVC Application is a sample website utilizing Kentico Deliver service to manage and retrieve content. This enhanced version has strongly typed view models and caching inbuit (for the home page as it is WIP)
 
 ## PREREQUISITIES
 
 1. Environment that is capable of running the .NET MVC 5 application such as Visual Studio 2013+.
 2. Account at https://app.kenticocloud.com with a sample project that is created automatically for every new subscription. You can read more about Kentico Deliver service activation here: https://kenticocloud.com/docs#enabling-kentico-deliver .
+3. Use of [EmmTi.KenticoCloudConsumer.EnhancedDeliver NuGet package](https://www.nuget.org/packages/EmmTi.KenticoCloudConsumer.EnhancedDeliver/)
 
 ## CONTENT ADMINISTRATION
 
