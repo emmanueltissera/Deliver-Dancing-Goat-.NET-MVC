@@ -46,8 +46,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EmmTi.KenticoCloudConsumer.EnhancedDeliver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EmmTi.KenticoCloudConsumer.EnhancedDeliver.1.0.0\lib\net45\EmmTi.KenticoCloudConsumer.EnhancedDeliver.dll</HintPath>
+    <Reference Include="EmmTi.KenticoCloudConsumer.EnhancedDeliver, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmmTi.KenticoCloudConsumer.EnhancedDeliver.1.0.1\lib\net45\EmmTi.KenticoCloudConsumer.EnhancedDeliver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="KenticoCloud.Deliver, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
