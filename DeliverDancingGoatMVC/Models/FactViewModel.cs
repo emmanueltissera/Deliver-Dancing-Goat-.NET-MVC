@@ -13,7 +13,7 @@ namespace DeliverDancingGoatMVC.Models
         public Asset Image { get; set; }
         public string Title { get; set; }
 
-        protected override void MapContentForType(ContentItem content)
+        protected override void MapContentForType(ContentItem content, int currentDepth)
         {
             Description = new HtmlString(content.GetString("description"));
             Image = content.GetAssets("image").FirstOrDefault();

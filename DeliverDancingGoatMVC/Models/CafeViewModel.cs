@@ -17,7 +17,7 @@ namespace DeliverDancingGoatMVC.Models
         public string Street { get; set; }
         public string ZipCode { get; set; }
 
-        protected override void MapContentForType(ContentItem content)
+        protected override void MapContentForType(ContentItem content, int currentDepth)
         {
             City = content.GetString("city");
             Country = content.GetString("country");
