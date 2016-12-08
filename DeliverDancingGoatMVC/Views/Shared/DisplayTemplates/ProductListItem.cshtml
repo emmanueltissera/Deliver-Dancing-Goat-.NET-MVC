@@ -1,24 +1,23 @@
-﻿@model KenticoCloud.Deliver.ContentItem
-
+﻿@model DeliverDancingGoatMVC.Models.BaseProductViewModel
 @{
-    var image = Model.Elements.image.value.First;
+    var image = Model.Image;
 }
 
 <article class="product-tile">
     <a href="@Url.Action("Detail", "Product", new {id = Model.System.Codename})">
         <h1 class="product-heading">@Model.System.Name</h1>
-        @if (Model.Elements.product_status.value.Count > 0)
+        @if (Model.ProductStatus.Key != null)
         {
             <span class="product-tile-status">
-                @Model.Elements.product_status.value.First.name
+                @Model.ProductStatus.Value
             </span>
         }
         <figure class="product-tile-image">
-            <img src="@image.url" alt="@image.name" width="452" height="452" />
+            <img src="@image.Url" alt="@image.Name" width="452" height="452" />
         </figure>
         <div class="product-tile-info">
             <span class="product-tile-price">
-                @Model.Elements.price.value.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))
+                @Model.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))
             </span>
         </div>
     </a>

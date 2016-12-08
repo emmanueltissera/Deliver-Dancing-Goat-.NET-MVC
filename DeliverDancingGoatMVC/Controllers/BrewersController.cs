@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Threading.Tasks;
 
 using DeliverDancingGoatMVC.Models;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
 using KenticoCloud.Deliver;
 
 namespace DeliverDancingGoatMVC.Controllers
@@ -14,7 +15,6 @@ namespace DeliverDancingGoatMVC.Controllers
     [RoutePrefix("product-catalog/brewers")]
     public class BrewersController : AsyncController
     {
-        private readonly DeliverClient client = new DeliverClient(ConfigurationManager.AppSettings["ProjectId"]);
 
         [Route]
         public async Task<ActionResult> Index()
@@ -22,13 +22,13 @@ namespace DeliverDancingGoatMVC.Controllers
             var filters = new List<IFilter> {
                 new EqualsFilter("system.type", "brewer"),
                 new Order("elements.product_name"),
-                new ElementsFilter("image", "price", "product_status", "processing"),
+                new ElementsFilter("image", "price", "product_status"),
                 new DepthFilter(0)
             };
 
-            var response = await client.GetItemsAsync(filters);
+            var collection = await DeliverClientFactory<BaseProductCollectionViewModel>.GetItemsAsync(filters);
 
-            return View(response.Items);
+            return View(collection);
         }
 
         public async Task<ActionResult> Filter(BrewerFilterViewModel model)
@@ -36,7 +36,7 @@ namespace DeliverDancingGoatMVC.Controllers
             var filters = new List<IFilter> {
                 new EqualsFilter("system.type", "brewer"),
                 new Order("elements.product_name"),
-                new ElementsFilter("image", "price", "product_status", "processing"),
+                new ElementsFilter("image", "price", "product_status"),
                 new DepthFilter(0)
             };
 
@@ -46,9 +46,9 @@ namespace DeliverDancingGoatMVC.Controllers
                 filters.Add(new InFilter("elements.manufacturer", manufacturers));
             }
 
-            var response = await client.GetItemsAsync(filters);
+            var collection = await DeliverClientFactory<BaseProductCollectionViewModel>.GetItemsAsync(filters);
 
-            return PartialView("BrewersList", response.Items);
+            return PartialView("BrewersList", collection);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Threading.Tasks;
 
 using DeliverDancingGoatMVC.Models;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
 using KenticoCloud.Deliver;
 
 namespace DeliverDancingGoatMVC.Controllers
@@ -26,9 +27,9 @@ namespace DeliverDancingGoatMVC.Controllers
                 new DepthFilter(0)
             };
 
-            var response = await client.GetItemsAsync(filters);
+            var collection = await DeliverClientFactory<BaseProductCollectionViewModel>.GetItemsAsync(filters);
 
-            return View(response.Items);
+            return View(collection);
         }
 
         public async Task<ActionResult> Filter (CoffeesFilterViewModel model)
@@ -46,9 +47,9 @@ namespace DeliverDancingGoatMVC.Controllers
                 filters.Add(new InFilter("elements.processing", filter));
             }
 
-            var response = await client.GetItemsAsync(filters);
-
-            return PartialView("CoffeeList", response.Items);
+            var collection = await DeliverClientFactory<BaseProductCollectionViewModel>.GetItemsAsync(filters);
+            
+            return PartialView("CoffeeList", collection);
         }
     }
 }

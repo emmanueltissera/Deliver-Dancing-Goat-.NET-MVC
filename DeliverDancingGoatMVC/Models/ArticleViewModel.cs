@@ -5,12 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DeliverDancingGoatMVC.Helpers;
 
 namespace DeliverDancingGoatMVC.Models
 {
     public class ArticleViewModel : BaseContentItemViewModel
     {
         public const string ItemCodeName = "article";
+
+        public ArticleViewModel()
+        {
+            MaxDepth = 1;
+        }
+
         public HtmlString BodyCopy { get; set; }
         public string MetaDescription { get; set; }
         public string MetaKeywords { get; set; }
@@ -23,15 +30,15 @@ namespace DeliverDancingGoatMVC.Models
 
         protected override void MapContentForType(ContentItem content, int currentDepth)
         {
-            BodyCopy = new HtmlString(content.GetString("body_copy"));
-            MetaDescription = content.GetString("meta_description");
-            MetaKeywords = content.GetString("meta_keywords");
+            BodyCopy = new HtmlString(content.GetStringOrDefault("body_copy"));
+            MetaDescription = content.GetStringOrDefault("meta_description");
+            MetaKeywords = content.GetStringOrDefault("meta_keywords");
             Personas = content.GetTaxonomyItems("personas");
-            PostDate = content.GetDateTime("post_date");
-            RelatedArticles = content.GetModularContent("related_articles").GetListOfModularContent<ArticleViewModel>(currentDepth + 1);
+            PostDate = content.GetDateTimeOrDefault("post_date");
+            RelatedArticles = content.GetModularContentOrDefault("related_articles").GetListOfModularContent<ArticleViewModel>(currentDepth + 1);
             Summary = content.GetString("summary");
             TeaserImage = content.GetAssets("teaser_image").FirstOrDefault();
-            Title = content.GetString("title");
+            Title = content.GetStringOrDefault("title");
         }
     }
 }
