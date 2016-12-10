@@ -1,8 +1,8 @@
-﻿@model IEnumerable<KenticoCloud.Deliver.ContentItem>
+﻿@model DeliverDancingGoatMVC.Models.BaseProductCollectionViewModel
 
-@if (Model.Any())
+@if (Model.Items.Any())
 {
-    foreach (var coffee in Model)
+    foreach (var coffee in Model.Items)
     {
         <!-- 3 products on row for large screen -->
         <div class="col-md-6 col-lg-4">

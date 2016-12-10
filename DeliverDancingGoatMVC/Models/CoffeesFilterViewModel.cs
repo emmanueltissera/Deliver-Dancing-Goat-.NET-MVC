@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace DeliverDancingGoatMVC.Models
 {
     public class CoffeesFilterViewModel
     {
-        public bool Washed { get; set; }
-        public bool SemiWashed { get; set; }
         public bool Natural { get; set; }
-
+        public bool SemiWashed { get; set; }
+        public bool Washed { get; set; }
 
         public IEnumerable<string> GetFilteredValues()
         {

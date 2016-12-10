@@ -1,37 +1,17 @@
-﻿using System;
+﻿using DeliverDancingGoatMVC.Models;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
+using KenticoCloud.Deliver;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Configuration;
 using System.Threading.Tasks;
-
-using DeliverDancingGoatMVC.Models;
-using KenticoCloud.Deliver;
+using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
     [RoutePrefix("product-catalog/coffees")]
     public class CoffeesController : AsyncController
     {
-        private readonly DeliverClient client = new DeliverClient(ConfigurationManager.AppSettings["ProjectId"]);
-
-        [Route]
-        public async Task<ActionResult> Index()
-        {
-            var filters = new List<IFilter> {
-                new EqualsFilter("system.type", "coffee"),
-                new Order("elements.product_name"),
-                new ElementsFilter("image", "price", "product_status", "processing"),
-                new DepthFilter(0)
-            };
-
-            var response = await client.GetItemsAsync(filters);
-
-            return View(response.Items);
-        }
-
-        public async Task<ActionResult> Filter (CoffeesFilterViewModel model)
+        public async Task<ActionResult> Filter(CoffeesFilterViewModel model)
         {
             var filters = new List<IFilter> {
                 new EqualsFilter("system.type", "coffee"),
@@ -46,9 +26,22 @@ namespace DeliverDancingGoatMVC.Controllers
                 filters.Add(new InFilter("elements.processing", filter));
             }
 
-            var response = await client.GetItemsAsync(filters);
+            var collection = await DeliverClientFactory<BaseProductCollectionViewModel>.GetItemsAsync(filters);
+            return PartialView("CoffeeList", collection);
+        }
 
-            return PartialView("CoffeeList", response.Items);
+        [Route]
+        public async Task<ActionResult> Index()
+        {
+            var filters = new List<IFilter> {
+                new EqualsFilter("system.type", "coffee"),
+                new Order("elements.product_name"),
+                new ElementsFilter("image", "price", "product_status", "processing"),
+                new DepthFilter(0)
+            };
+
+            var collection = await DeliverClientFactory<BaseProductCollectionViewModel>.GetItemsAsync(filters);
+            return View(collection);
         }
     }
 }

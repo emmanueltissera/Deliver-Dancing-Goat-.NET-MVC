@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
+﻿using DeliverDancingGoatMVC.Models;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
+using KenticoCloud.Deliver;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
-using KenticoCloud.Deliver;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
     [RoutePrefix("products")]
     public class ProductController : AsyncController
     {
-        private readonly DeliverClient client = new DeliverClient(ConfigurationManager.AppSettings["ProjectId"]);
-
         [Route("{id}")]
         public async Task<ActionResult> Detail(string id)
         {
             try
             {
-                var response = await client.GetItemAsync(id);
-                return View(response.Item);
-
+                var model = await DeliverClientFactory<GenericProductViewModel>.GetItemByIdAsync(id);
+                return View(model.Item);
             }
             catch (DeliverException ex)
             {

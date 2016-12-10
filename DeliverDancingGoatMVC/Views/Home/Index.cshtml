@@ -20,14 +20,14 @@
 <section class="banner-section" style="background-image: url('@heroUnit.Image.Url');">
     <h2 class="banner-heading">@heroUnit.Title</h2>
     <div class="banner-text">
-        @Html.Raw(@heroUnit.MarketingMessage)
+        @heroUnit.MarketingMessage
     </div>
 </section>
 
 <div class="row">
     <h1 class="title-tab">@Resources.DancingGoat.Articles_LatestOne</h1>
     @{var isFirstArticle = true; }
-    @foreach (var article in @Model.Articles)
+    @foreach (var article in Model.Articles)
     {
         if (isFirstArticle)
         {

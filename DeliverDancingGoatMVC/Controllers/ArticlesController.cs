@@ -1,21 +1,17 @@
-﻿using System;
+﻿using DeliverDancingGoatMVC.Models;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
+using KenticoCloud.Deliver;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
-using KenticoCloud.Deliver;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
     [RoutePrefix("articles")]
     public class ArticlesController : AsyncController
     {
-        private readonly DeliverClient client = new DeliverClient(ConfigurationManager.AppSettings["ProjectId"]);
-
         [Route]
         public async Task<ActionResult> Index()
         {
@@ -25,9 +21,9 @@ namespace DeliverDancingGoatMVC.Controllers
                 new ElementsFilter("teaser_image", "post_date", "summary")
             };
 
-            var articles = await client.GetItemsAsync(filters);
+            var collection = await DeliverClientFactory<ArticleCollectionViewModel>.GetItemsAsync(filters);
 
-            return View(articles.Items);
+            return View(collection);
         }
 
         [Route("{id}")]
@@ -35,8 +31,8 @@ namespace DeliverDancingGoatMVC.Controllers
         {
             try
             {
-                var response = await client.GetItemAsync(id);
-                return View(response.Item);
+                var model = await DeliverClientFactory<ArticleViewModel>.GetItemByIdAsync(id);
+                return View(model);
             }
             catch (DeliverException ex)
             {
