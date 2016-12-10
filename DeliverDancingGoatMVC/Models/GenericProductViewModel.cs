@@ -1,4 +1,4 @@
-﻿using DeliverDancingGoatMVC.Helpers;
+﻿using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Helpers;
 using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Models;
 using KenticoCloud.Deliver;
 
@@ -13,11 +13,11 @@ namespace DeliverDancingGoatMVC.Models
             switch (content.System.Type)
             {
                 case CoffeeViewModel.ItemCodeName:
-                    Item = content.GetContent<CoffeeViewModel>();
+                    Item = content.MapContent<CoffeeViewModel>();
                     break;
 
                 case BrewerViewModel.ItemCodeName:
-                    Item = content.GetContent<BrewerViewModel>();
+                    Item = content.MapContent<BrewerViewModel>();
                     break;
             }
         }

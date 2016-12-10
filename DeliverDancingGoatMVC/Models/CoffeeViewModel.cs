@@ -1,4 +1,4 @@
-﻿using DeliverDancingGoatMVC.Helpers;
+﻿using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Helpers;
 using KenticoCloud.Deliver;
 
 namespace DeliverDancingGoatMVC.Models

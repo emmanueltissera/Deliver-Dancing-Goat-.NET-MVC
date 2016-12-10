@@ -46,8 +46,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EmmTi.KenticoCloudConsumer.EnhancedDeliver, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EmmTi.KenticoCloudConsumer.EnhancedDeliver.1.0.3\lib\net45\EmmTi.KenticoCloudConsumer.EnhancedDeliver.dll</HintPath>
+    <Reference Include="EmmTi.KenticoCloudConsumer.EnhancedDeliver, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmmTi.KenticoCloudConsumer.EnhancedDeliver.1.0.4\lib\net45\EmmTi.KenticoCloudConsumer.EnhancedDeliver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="KenticoCloud.Deliver, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -182,7 +182,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ContentTypeExtensions.cs" />
     <Compile Include="Models\AboutUsViewModel.cs" />
     <Compile Include="Models\GenericProductViewModel.cs" />
     <Compile Include="Models\BrewerCollectionViewModel.cs" />
