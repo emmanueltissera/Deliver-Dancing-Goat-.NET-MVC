@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-
-using DeliverDancingGoatMVC.Models;
+﻿using DeliverDancingGoatMVC.Models;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
 using KenticoCloud.Deliver;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
     [RoutePrefix("cafes")]
     public class CafesController : AsyncController
     {
-        private readonly DeliverClient client = new DeliverClient(ConfigurationManager.AppSettings["ProjectId"]);
-
         [Route]
         public async Task<ActionResult> Index()
         {
@@ -24,15 +18,8 @@ namespace DeliverDancingGoatMVC.Controllers
                 new Order("system.name")
             };
 
-            var cafes = (await client.GetItemsAsync(filters)).Items;
-
-            var viewModel = new CafesViewModel
-            {
-                CompanyCafes = cafes.Where(c => c.GetString("country") == "USA").ToList(),
-                PartnerCafes = cafes.Where(c => c.GetString("country") != "USA").ToList()
-            };
-
-            return View(viewModel);
+            var collection = await DeliverClientFactory<CafeCollectionViewModel>.GetItemsAsync(filters);
+            return View(collection);
         }
     }
 }

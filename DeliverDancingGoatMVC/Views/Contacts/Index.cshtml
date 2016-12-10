@@ -7,11 +7,11 @@
 <div class="col-md-12">
     <h2 class="contact-title">@Resources.DancingGoat.Roastery</h2>
     <ul class="contact-info">
-        <li>@Model.Roastery.Elements.phone.value</li>
-        <li><a href="mailto:@Model.Roastery.Elements.email.value" target="_top">@Model.Roastery.Elements.email.value</a></li>
+        <li>@Model.Roastery.Phone</li>
+        <li><a href="mailto:@Model.Roastery.Email" target="_top">@Model.Roastery.Email</a></li>
         <li>
-            <a href="javascript:void(0)" data-address="@Model.Roastery.Elements.city.value, @Model.Roastery.Elements.street.value" class="js-scroll-to-map">@Model.Roastery.Elements.street.value @Model.Roastery.Elements.city.value,<br />
-                @Model.Roastery.Elements.zip_code.value, @Model.Roastery.Elements.country.value, @Model.Roastery.Elements.state.value<br />
+            <a href="javascript:void(0)" data-address="@Model.Roastery.City, @Model.Roastery.Street" class="js-scroll-to-map">@Model.Roastery.Street @Model.Roastery.City,<br />
+                @Model.Roastery.ZipCode, @Model.Roastery.Country, @Model.Roastery.State<br />
             </a>
         </li>
     </ul>
@@ -19,18 +19,18 @@
 
 <h2>@Resources.DancingGoat.CompanyCafes</h2>
 <div class="row">
-    @foreach (var cafe in @Model.Cafes)
+    @foreach (var cafe in Model.Cafes)
     {
         <div class="col-md-6 col-lg-3">
-            <div class="cafe-tile cursor-hand js-scroll-to-map" data-address="@cafe.Elements.city.value, @cafe.Elements.street.value">
+            <div class="cafe-tile cursor-hand js-scroll-to-map" data-address="@cafe.City, @cafe.Street">
                 <div class="cafe-tile-content">
                     <h3 class="cafe-tile-name">@cafe.System.Name</h3>
                     <address class="cafe-tile-address">
-                        <a href="javascript:void(0)" class="cafe-tile-address-anchor">@cafe.Elements.street.value, @cafe.Elements.city.value<br />
-                            @cafe.Elements.zip_code.value, @cafe.Elements.country.value, @cafe.Elements.state.value
+                        <a href="javascript:void(0)" class="cafe-tile-address-anchor">@cafe.Street, @cafe.City<br />
+                            @cafe.ZipCode, @cafe.Country, @cafe.State
                         </a>
                     </address>
-                    <p class="cafe-tile-phone">@cafe.Elements.phone.value</p>
+                    <p class="cafe-tile-phone">@cafe.Phone</p>
                 </div>
             </div>
         </div>

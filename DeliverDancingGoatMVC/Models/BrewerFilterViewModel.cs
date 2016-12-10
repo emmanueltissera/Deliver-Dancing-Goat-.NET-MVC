@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace DeliverDancingGoatMVC.Models
 {
@@ -11,7 +8,6 @@ namespace DeliverDancingGoatMVC.Models
         public bool Chemex { get; set; }
         public bool Espro { get; set; }
         public bool Hario { get; set; }
-
 
         public IEnumerable<string> GetManufacturerFilters()
         {

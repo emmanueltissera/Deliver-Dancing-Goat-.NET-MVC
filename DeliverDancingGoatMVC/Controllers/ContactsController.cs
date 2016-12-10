@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-
-using DeliverDancingGoatMVC.Models;
+﻿using DeliverDancingGoatMVC.Models;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
 using KenticoCloud.Deliver;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
     [RoutePrefix("contacts")]
     public class ContactsController : AsyncController
     {
-        private readonly DeliverClient client = new DeliverClient(ConfigurationManager.AppSettings["ProjectId"]);
+        [ChildActionOnly]
+        public ActionResult CompanyAddress()
+        {
+            //// Filter removed since the HomeViewModel is anyhow cached and reused.
+            var contact = DeliverClientFactory<HomeViewModel>.GetItem(HomeViewModel.ItemCodeName).Contact;
+            return Content(contact.ToHtmlString());
+        }
 
         [Route]
         public async Task<ActionResult> Index()
@@ -24,27 +26,8 @@ namespace DeliverDancingGoatMVC.Controllers
                 new EqualsFilter("elements.country", "USA")
             };
 
-            var cafes = (await client.GetItemsAsync(filters)).Items;
-
-            var viewModel = new ContactsViewModel
-            {
-                Roastery = cafes.First(),
-                Cafes = cafes
-            };
-
-            return View(viewModel);
-        }
-
-        [ChildActionOnly]
-        public ActionResult CompanyAddress()
-        {
-            var filters = new List<IFilter> {
-                new ElementsFilter("contact")
-            };
-
-            var contact = Task.Run(() => client.GetItemAsync("home", filters)).Result.Item.GetString("contact");
-
-            return Content(contact);
+            var model = await DeliverClientFactory<ContactsViewModel>.GetItemsAsync(filters);
+            return View(model);
         }
     }
 }

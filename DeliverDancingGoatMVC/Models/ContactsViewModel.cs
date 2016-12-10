@@ -1,15 +1,20 @@
-﻿using KenticoCloud.Deliver;
-using System;
+﻿using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Helpers;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Models;
+using KenticoCloud.Deliver;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace DeliverDancingGoatMVC.Models
 {
-    public class ContactsViewModel
+    public class ContactsViewModel : BaseContentItemViewModel
     {
-        public ContentItem Roastery{ get; set; }
+        public List<CafeViewModel> Cafes { get; set; }
+        public CafeViewModel Roastery { get; set; }
 
-        public List<ContentItem> Cafes { get; set; }
+        protected override void MapContentListForType(List<ContentItem> contentList, int currentDepth)
+        {
+            Cafes = contentList.GetListOfModularContent<CafeViewModel>();
+            Roastery = Cafes.FirstOrDefault();
+        }
     }
 }

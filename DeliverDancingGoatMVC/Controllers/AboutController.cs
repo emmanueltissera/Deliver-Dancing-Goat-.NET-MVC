@@ -11,8 +11,8 @@ namespace DeliverDancingGoatMVC.Controllers
         [Route]
         public async Task<ActionResult> Index()
         {
-            var response = await DeliverClientFactory<AboutUsViewModel>.GetItemAsync(AboutUsViewModel.ItemCodeName);
-            return View(response);
+            var model = await DeliverClientFactory<AboutUsViewModel>.GetItemAsync(AboutUsViewModel.ItemCodeName);
+            return View(model);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@model DeliverDancingGoatMVC.Models.ArticleViewModel
 @{
-    ViewBag.Title = @Model.System.Name;
+    ViewBag.Title = Model.System.Name;
     var englishCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-us");
     var relatedArticles = Model.RelatedArticles;
 }

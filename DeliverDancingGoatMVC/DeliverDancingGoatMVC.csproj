@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="Helpers\ContentTypeExtensions.cs" />
     <Compile Include="Models\AboutUsViewModel.cs" />
+    <Compile Include="Models\GenericProductViewModel.cs" />
     <Compile Include="Models\BrewerCollectionViewModel.cs" />
     <Compile Include="Models\ArticleCollectionViewModel.cs" />
     <Compile Include="Models\BaseProductViewModel.cs" />
@@ -191,7 +192,7 @@
     <Compile Include="Models\BrewerViewModel.cs" />
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\BrewerFilterViewModel.cs" />
-    <Compile Include="Models\CafesViewModel.cs" />
+    <Compile Include="Models\CafeCollectionViewModel.cs" />
     <Compile Include="Models\CoffeesFilterViewModel.cs" />
     <Compile Include="Models\ContactsViewModel.cs" />
     <Compile Include="Models\CafeViewModel.cs" />

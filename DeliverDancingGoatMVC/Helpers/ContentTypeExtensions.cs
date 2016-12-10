@@ -2,6 +2,7 @@
 using KenticoCloud.Deliver;
 using System;
 using System.Collections.Generic;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Interfaces;
 
 namespace DeliverDancingGoatMVC.Helpers
 {
@@ -29,6 +30,13 @@ namespace DeliverDancingGoatMVC.Helpers
         public static string GetStringOrDefault(this ContentItem content, string element, string defaultValue = "")
         {
             return content.Elements[element] == null ? defaultValue : content.GetString(element);
+        }
+
+        public static T GetContent<T>(this ContentItem content, int currentDepth = 0) where T : IKenticoDeliverViewModel, new()
+        {
+            var model = new T();
+            model.MapContent(content, currentDepth);
+            return model;
         }
     }
 }
