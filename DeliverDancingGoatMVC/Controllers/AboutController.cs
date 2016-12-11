@@ -5,10 +5,8 @@ using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
-    [RoutePrefix("about")]
     public class AboutController : AsyncController
     {
-        [Route]
         public async Task<ActionResult> Index()
         {
             var model = await DeliverClientFactory<AboutUsViewModel>.GetItemAsync(AboutUsViewModel.ItemCodeName);

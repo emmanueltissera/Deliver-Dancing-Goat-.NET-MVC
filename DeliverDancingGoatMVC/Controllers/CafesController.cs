@@ -7,10 +7,8 @@ using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
-    [RoutePrefix("cafes")]
     public class CafesController : AsyncController
     {
-        [Route]
         public async Task<ActionResult> Index()
         {
             var filters = new List<IFilter> {

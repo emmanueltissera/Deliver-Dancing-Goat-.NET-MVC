@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
-    [RoutePrefix("product-catalog/brewers")]
     public class BrewersController : AsyncController
     {
         public async Task<ActionResult> Filter(BrewerFilterViewModel model)
@@ -31,7 +30,6 @@ namespace DeliverDancingGoatMVC.Controllers
             return PartialView("BrewersList", collection);
         }
 
-        [Route]
         public async Task<ActionResult> Index()
         {
             var filters = new List<IFilter> {

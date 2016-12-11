@@ -8,10 +8,8 @@ using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
-    [RoutePrefix("products")]
     public class ProductController : AsyncController
     {
-        [Route("{id}")]
         public async Task<ActionResult> Detail(string id)
         {
             try

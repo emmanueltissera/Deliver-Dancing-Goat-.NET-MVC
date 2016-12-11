@@ -7,7 +7,6 @@ namespace DeliverDancingGoatMVC.Controllers
 {
     public class HomeController : AsyncController
     {
-        [Route]
         public async Task<ActionResult> Index()
         {
             var model = await DeliverClientFactory<HomeViewModel>.GetItemAsync(HomeViewModel.ItemCodeName);
