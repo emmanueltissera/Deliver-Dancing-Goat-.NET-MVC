@@ -4,7 +4,7 @@
 }
 
 <article class="product-tile">
-    <a href="@Url.Action("Detail", "Product", new {id = Model.System.Codename})">
+    <a href="@Model.Url">
         <h1 class="product-heading">@Model.System.Name</h1>
         @if (Model.ProductStatus.Key != null)
         {

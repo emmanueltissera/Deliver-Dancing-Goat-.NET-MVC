@@ -11,14 +11,20 @@ namespace DeliverDancingGoatMVC
 
             routes.MapRoute(
                 name: "AboutRoute",
-                url: "about",
+                url: "about-us",
                 defaults: new { controller = "About", action = "Index" }
             );
 
             routes.MapRoute(
+                name: "ArticlesDetailRoute",
+                url: "articles/{id}",
+                defaults: new { controller = "Articles", action = "Show" }
+            );
+
+            routes.MapRoute(
                 name: "ArticlesRoute",
-                url: "articles/{action}/{id}",
-                defaults: new { controller = "Articles", action = "Index", id = UrlParameter.Optional }
+                url: "articles",
+                defaults: new { controller = "Articles", action = "Index"}
             );
 
             routes.MapRoute(
@@ -46,9 +52,15 @@ namespace DeliverDancingGoatMVC
             );
 
             routes.MapRoute(
-                name: "ProductsRoute",
-                url: "products/{id}",
-                defaults: new { controller = "Contacts", action = "Detail" }
+                name: "ProductsCoffeesRoute",
+                url: "coffee/{id}",
+                defaults: new { controller = "Product", action = "Detail" }
+            );
+
+            routes.MapRoute(
+                name: "ProductsBrewersRoute",
+                url: "brewers/{id}",
+                defaults: new { controller = "Product", action = "Detail" }
             );
 
             routes.MapRoute(

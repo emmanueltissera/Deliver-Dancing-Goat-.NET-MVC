@@ -29,7 +29,7 @@
             {
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="article-tile">
-                        <a href="@Url.Action("Show", "Articles", new { id = article.System.Codename })">
+                        <a href="@article.Url">
                             <img src="@article.TeaserImage.Url" class="article-tile-image" alt="Article @Model.System.Name" />
                         </a>
                         <div class="article-tile-date">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="article-tile-content">
                             <h2 class="h4">
-                                <a href="@Url.Action("Show", "Articles", new { id = article.System.Codename })">@article.System.Name</a>
+                                <a href="@article.Url">@article.System.Name</a>
                             </h2>
                             <p class="article-tile-text">
                                 @Model.Summary
