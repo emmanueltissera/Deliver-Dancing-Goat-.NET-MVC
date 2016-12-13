@@ -1,0 +1,12 @@
+﻿@model DeliverDancingGoatMVC.Models.NavigationViewModel
+
+<nav role="navigation">
+    <ul>
+        @foreach (var navItem in Model.TopNavigationItems)
+        {
+            <li>
+                <a href="@navItem.TargetUrl" title="@navItem.Title">@navItem.Title</a>
+            </li>
+        }
+    </ul>
+</nav>
