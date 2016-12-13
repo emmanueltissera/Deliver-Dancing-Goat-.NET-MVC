@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
-    [RoutePrefix("contacts")]
     public class ContactsController : AsyncController
     {
         [ChildActionOnly]
@@ -18,7 +17,6 @@ namespace DeliverDancingGoatMVC.Controllers
             return Content(contact.ToHtmlString());
         }
 
-        [Route]
         public async Task<ActionResult> Index()
         {
             var filters = new List<IFilter> {

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DeliverDancingGoatMVC.Helpers
+<!DOCTYPE html>
 
 <html>
 <head id="head">
@@ -12,28 +13,11 @@
         <header class="header" role="banner">
             <div class="menu">
                 <div class="container">
-                    <nav role="navigation">
-                        <ul>
-                            <li>
-                                @Html.ActionLink(Resources.DancingGoat.Home, "Index", "Home")
-                            </li>
-                            <li>
-                                @Html.ActionLink(Resources.DancingGoat.Store, "Index", "Coffees")
-                            </li>
-                            <li>
-                                @Html.ActionLink(Resources.DancingGoat.Articles, "Index", "Articles")
-                            </li>
-                            <li>
-                                @Html.ActionLink(Resources.DancingGoat.AboutUs, "Index", "About")
-                            </li>
-                            <li>
-                                @Html.ActionLink(Resources.DancingGoat.Cafes, "Index", "Cafes")
-                            </li>
-                            <li>
-                                @Html.ActionLink(Resources.DancingGoat.Contact, "Index", "Contacts")
-                            </li>
-                        </ul>
-                    </nav>
+                    @{
+                        // TODO: Add new content types and content into the Dancing Goat sample to enable this.
+                        // Html.RenderPartial("TopNavigation", PartialViewHelper.GetTopNavigation());
+                        Html.RenderPartial("TopNavigationStatic");
+                    }
                 </div>
             </div>
             <div class="header-row">

@@ -9,10 +9,8 @@ using System.Web.Mvc;
 
 namespace DeliverDancingGoatMVC.Controllers
 {
-    [RoutePrefix("articles")]
     public class ArticlesController : AsyncController
     {
-        [Route]
         public async Task<ActionResult> Index()
         {
             var filters = new List<IFilter> {
@@ -26,7 +24,6 @@ namespace DeliverDancingGoatMVC.Controllers
             return View(collection);
         }
 
-        [Route("{id}")]
         public async Task<ActionResult> Show(string id)
         {
             try

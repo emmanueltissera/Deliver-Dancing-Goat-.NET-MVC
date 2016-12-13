@@ -46,8 +46,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EmmTi.KenticoCloudConsumer.EnhancedDeliver, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EmmTi.KenticoCloudConsumer.EnhancedDeliver.1.0.4\lib\net45\EmmTi.KenticoCloudConsumer.EnhancedDeliver.dll</HintPath>
+    <Reference Include="EmmTi.KenticoCloudConsumer.EnhancedDeliver, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmmTi.KenticoCloudConsumer.EnhancedDeliver.1.0.5\lib\net45\EmmTi.KenticoCloudConsumer.EnhancedDeliver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="KenticoCloud.Deliver, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -175,6 +175,7 @@
     <Compile Include="Controllers\CafesController.cs" />
     <Compile Include="Controllers\BrewersController.cs" />
     <Compile Include="Controllers\CoffeesController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -182,7 +183,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PartialViewHelper.cs" />
     <Compile Include="Models\AboutUsViewModel.cs" />
+    <Compile Include="Models\NavigationItemViewModel.cs" />
+    <Compile Include="Models\NavigationViewModel.cs" />
     <Compile Include="Models\GenericProductViewModel.cs" />
     <Compile Include="Models\BrewerCollectionViewModel.cs" />
     <Compile Include="Models\ArticleCollectionViewModel.cs" />
@@ -277,8 +281,9 @@
     <Content Include="Views\Shared\DisplayTemplates\ProductListItem.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\_StoreLayout.cshtml" />
+    <Content Include="Views\Shared\TopNavigationStatic.cshtml" />
+    <None Include="Views\Shared\TopNavigation.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
