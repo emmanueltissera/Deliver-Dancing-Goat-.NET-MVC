@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using DeliverDancingGoatMVC.Routing;
 
 namespace DeliverDancingGoatMVC
 {
@@ -7,18 +8,16 @@ namespace DeliverDancingGoatMVC
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            //http://stackoverflow.com/questions/32565768/change-route-collection-of-mvc6-after-startup
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapCmsRoutes();
 
             routes.MapRoute(
                 name: "AboutRoute",
                 url: "about-us",
                 defaults: new { controller = "About", action = "Index" }
-            );
-
-            routes.MapRoute(
-                name: "ArticlesDetailRoute",
-                url: "articles/{id}",
-                defaults: new { controller = "Articles", action = "Show" }
             );
 
             routes.MapRoute(
@@ -50,19 +49,7 @@ namespace DeliverDancingGoatMVC
                 url: "contacts",
                 defaults: new { controller = "Contacts", action = "Index" }
             );
-
-            routes.MapRoute(
-                name: "ProductsCoffeesRoute",
-                url: "coffee/{id}",
-                defaults: new { controller = "Product", action = "Detail" }
-            );
-
-            routes.MapRoute(
-                name: "ProductsBrewersRoute",
-                url: "brewers/{id}",
-                defaults: new { controller = "Product", action = "Detail" }
-            );
-
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
