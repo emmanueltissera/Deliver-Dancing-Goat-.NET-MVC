@@ -1,0 +1,3 @@
+[submodule "EnhancedDeliver"]
+	path = EnhancedDeliver
+	url = git@github.com:emmanueltissera/EmmTi.KenticoCloudConsumer.EnhancedDeliver.git
