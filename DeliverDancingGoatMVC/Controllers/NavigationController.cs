@@ -2,6 +2,7 @@
 using DeliverDancingGoatMVC.Models;
 using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
 using System.Web.Mvc;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Models;
 using KenticoCloud.Deliver;
 
 namespace DeliverDancingGoatMVC.Controllers

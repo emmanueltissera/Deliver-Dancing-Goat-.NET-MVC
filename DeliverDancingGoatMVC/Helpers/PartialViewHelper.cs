@@ -1,5 +1,5 @@
-﻿using DeliverDancingGoatMVC.Models;
-using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
+﻿using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Factories;
+using EmmTi.KenticoCloudConsumer.EnhancedDeliver.Models;
 using KenticoCloud.Deliver;
 using System.Collections.Generic;
 

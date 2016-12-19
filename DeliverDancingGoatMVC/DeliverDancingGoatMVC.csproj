@@ -181,8 +181,6 @@
     </Compile>
     <Compile Include="Helpers\PartialViewHelper.cs" />
     <Compile Include="Models\AboutUsViewModel.cs" />
-    <Compile Include="Models\NavigationItemViewModel.cs" />
-    <Compile Include="Models\NavigationViewModel.cs" />
     <Compile Include="Models\GenericProductViewModel.cs" />
     <Compile Include="Models\BrewerCollectionViewModel.cs" />
     <Compile Include="Models\ArticleCollectionViewModel.cs" />
